@@ -1,0 +1,8 @@
+{
+  "name": "MTM - Marca Tu Marca Creative Agency",
+  "description": "A high-performance, interactive creative agency portal for MTM, featuring smooth animations, immersive navigation, and an AI-powered production assistant.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

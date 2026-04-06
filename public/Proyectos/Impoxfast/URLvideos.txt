@@ -1,0 +1,5 @@
+# Una URL de YouTube por línea. Las mismas URLs deben mantenerse en data/integratedProjects.ts (IMPOXFAST_VIDEOS).
+https://www.youtube.com/watch?v=eK2xoMeKgyg&t=7s
+https://www.youtube.com/watch?v=7z86OZ6A9G0&time_continue=5
+https://www.youtube.com/watch?v=k_ftgmVl47E&t=11s
+https://www.youtube.com/watch?v=yOVnnAG-vnc&t=14s
