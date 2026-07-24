@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Play, X, MessageSquare, ArrowDown } from 'lucide-react';
 import { WHATSAPP_URL } from '../utils/whatsapp';
@@ -202,14 +201,6 @@ export const Hero: React.FC = () => {
             <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
           </a>
 
-          <Link
-            to="/proyectos"
-            className="group relative px-10 py-5 bg-white text-black rounded-full font-sync text-[10px] md:text-xs uppercase font-bold tracking-widest overflow-hidden transition-all duration-300 hover:scale-105 interactive"
-          >
-            <span className="relative z-10">Ver Proyectos</span>
-            <div className="absolute inset-0 bg-[#1FCDD2] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          </Link>
-          
           <button 
             onClick={() => setShowFullVideo(true)}
             className="flex items-center gap-3 px-10 py-5 border border-white/10 backdrop-blur-md rounded-full font-sync text-[10px] md:text-xs uppercase tracking-widest hover:bg-white/5 transition-all duration-300 group"
