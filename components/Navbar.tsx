@@ -77,7 +77,9 @@ export const Navbar: React.FC = () => {
             <img
               src="/MTM%20-%20Blanco%20y%20azul.png"
               alt="Marca tu Marca — MTM"
-              className="h-7 w-auto max-w-[min(72vw,280px)] md:h-9 md:max-w-[min(50vw,340px)] lg:h-10 object-contain object-left transition-transform duration-500 group-hover:scale-[1.02]"
+              className={`h-7 w-auto max-w-[min(72vw,280px)] md:h-9 md:max-w-[min(50vw,340px)] lg:h-10 object-contain object-left transition-[transform,filter] duration-500 group-hover:scale-[1.02] ${
+                scrolled || isMenuOpen ? 'brightness-0 dark:brightness-100' : ''
+              }`}
               decoding="async"
             />
           </motion.span>
@@ -152,7 +154,7 @@ export const Navbar: React.FC = () => {
                 <img
                   src="/MTM%20-%20Blanco%20y%20azul.png"
                   alt="Marca tu Marca — MTM"
-                  className="h-7 md:h-9 w-auto max-w-[240px] object-contain object-left"
+                  className="h-7 md:h-9 w-auto max-w-[240px] object-contain object-left brightness-0 dark:brightness-100"
                   decoding="async"
                 />
               </Link>

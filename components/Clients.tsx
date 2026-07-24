@@ -66,7 +66,7 @@ export const Clients: React.FC = () => {
                   alt={`Logo de marca aliada ${(index % clientLogos.length) + 1}`}
                   loading="lazy"
                   decoding="async"
-                  className="max-h-full max-w-full w-auto object-contain object-center transition-all duration-500"
+                  className="max-h-full max-w-full w-auto object-contain object-center transition-all duration-500 invert dark:invert-0"
                 />
               </div>
               <span className="mt-4 text-[8px] font-sync uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 transition-opacity text-[#1FCDD2]">

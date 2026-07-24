@@ -7,18 +7,21 @@ export const Footer: React.FC = () => {
     <footer className="py-16 px-6 md:px-12 border-t border-zinc-200/80 bg-zinc-100 dark:border-white/5 dark:bg-black">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
         <div className="flex flex-col items-center md:items-start gap-4">
-          <img
-            src="/MTM%20-%20Blanco%20y%20azul.png"
-            alt="MTM — Marca tu Marca"
-            className="h-14 md:h-16 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity dark:hidden"
-            decoding="async"
-          />
-          <img
-            src="/MTM%20-%20Blanco.png"
-            alt="MTM — Marca tu Marca"
-            className="hidden h-14 md:h-16 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity dark:block"
-            decoding="async"
-          />
+          {/* Chip oscuro en modo claro para que el logo blanco/cian sea legible; transparente en oscuro */}
+          <div className="rounded-2xl bg-zinc-900 px-5 py-4 dark:bg-transparent dark:p-0">
+            <img
+              src="/MTM%20-%20Blanco%20y%20azul.png"
+              alt="MTM — Marca tu Marca"
+              className="h-14 md:h-16 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity dark:hidden"
+              decoding="async"
+            />
+            <img
+              src="/MTM%20-%20Blanco.png"
+              alt="MTM — Marca tu Marca"
+              className="hidden h-14 md:h-16 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity dark:block"
+              decoding="async"
+            />
+          </div>
         </div>
         
         <div className="text-zinc-500 text-[10px] font-sync uppercase tracking-[0.2em] text-center md:text-left dark:text-neutral-500">
