@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Play, X, MessageSquare, ArrowDown } from 'lucide-react';
+import { Play, X, MessageSquare, ArrowDown, Construction } from 'lucide-react';
 import { WHATSAPP_URL } from '../utils/whatsapp';
 
 type HeroTitlePhase = 'mtm' | 'makeThemMove' | 'marcaTuMarca';
@@ -49,6 +49,26 @@ export const Hero: React.FC = () => {
 
   return (
     <div className="relative h-screen w-full flex flex-col items-center justify-center px-6 overflow-hidden">
+      {/* Marquesina — Website en Construcción */}
+      <div className="absolute top-20 md:top-24 left-0 right-0 z-20 overflow-hidden border-y border-black/10 bg-[#1FCDD2] py-2 md:py-2.5 pointer-events-none">
+        <motion.div
+          className="flex w-max items-center whitespace-nowrap"
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
+          aria-hidden
+        >
+          {Array.from({ length: 12 }).map((_, i) => (
+            <span
+              key={i}
+              className="flex items-center gap-3 px-6 font-sync text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-black"
+            >
+              <Construction size={14} strokeWidth={2} />
+              Website en Construcción
+            </span>
+          ))}
+        </motion.div>
+      </div>
+
       {/* Immersive Video Background */}
       <motion.div 
         style={{ y: y1 }}
