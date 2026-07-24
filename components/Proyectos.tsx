@@ -224,10 +224,10 @@ export const Proyectos: React.FC = () => {
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
                 <Link
-                  to="/#portfolio"
+                  to="/"
                   className="rounded-full border border-zinc-300/90 px-6 py-3 text-[10px] font-sync uppercase tracking-[0.2em] text-zinc-700 transition-colors hover:border-[#1FCDD2]/45 hover:text-zinc-900 dark:border-white/15 dark:text-neutral-300 dark:hover:text-white interactive"
                 >
-                  Casos en inicio
+                  Volver al inicio
                 </Link>
                 <a
                   href={WHATSAPP_URL}
