@@ -15,13 +15,6 @@ const stats = [
   { label: 'Años de experiencia', value: '8+' },
 ];
 
-const crean2Team = [
-  { name: 'Karen Patiño', role: 'Administrativo', img: 'https://picsum.photos/400/500?random=51' },
-  { name: 'Alexander Rodríguez', role: 'Gerente general', img: 'https://picsum.photos/400/500?random=52' },
-  { name: 'Marisol Ramos', role: 'Gerente de ventas', img: 'https://picsum.photos/400/500?random=53' },
-  { name: 'Juan Camilo', role: 'Auxiliar de producción', img: 'https://picsum.photos/400/500?random=54' },
-];
-
 const kitsEmpresariales = [
   { name: 'Kit empresarial 1', price: '$24.900' },
   { name: 'Kit empresarial 2', price: '$39.500' },
@@ -188,45 +181,6 @@ export const Crean2: React.FC = () => {
           </div>
         </section>
 
-        {/* Team */}
-        <section className="py-20 md:py-28 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="mb-14"
-            >
-              <h2 className="mb-4 font-headline text-3xl font-bold tracking-tighter text-zinc-900 md:text-5xl dark:text-white">
-                Conoce al equipo <span className="text-zinc-500 dark:text-neutral-600">Crean2</span>
-              </h2>
-              <div className="w-20 h-1 bg-[#1FCDD2]" />
-              <p className="mt-6 max-w-xl text-sm text-zinc-600 md:text-base dark:text-neutral-400">
-                Ellos ya conocieron nuestra energía; falta que nos conozcas tú.
-              </p>
-            </motion.div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-              {crean2Team.map((m, i) => (
-                <motion.div
-                  key={m.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.06 }}
-                  className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-900 border border-white/5"
-                >
-                  <img src={m.img} alt={m.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
-                    <p className="text-[#1FCDD2] font-sync text-[8px] md:text-[9px] uppercase tracking-widest mb-1">{m.role}</p>
-                    <h3 className="font-headline font-bold text-sm md:text-base text-white">{m.name}</h3>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Kits — sección ocultada temporalmente
         <section id="kits" className="border-y border-zinc-200/80 bg-zinc-100/50 px-6 py-20 md:px-12 md:py-28 dark:border-white/5 dark:bg-white/[0.02]">
           <div className="max-w-7xl mx-auto space-y-20">
@@ -298,12 +252,6 @@ export const Crean2: React.FC = () => {
         {/* Publicaciones */}
         <section className="py-20 md:py-28 px-6 md:px-12">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="mb-6 font-headline text-3xl font-bold tracking-tighter text-zinc-900 md:text-5xl dark:text-white">
-              Nuestras <span className="text-zinc-500 dark:text-neutral-600">publicaciones</span>
-            </h2>
-            <p className="mb-10 text-sm text-zinc-600 md:text-base dark:text-neutral-400">
-              Explora nuestro catálogo y trabajos publicados.
-            </p>
             <a
               href="https://indd.adobe.com/view/52c23560-b5a7-4e8c-9747-04ef5218fc74"
               target="_blank"
