@@ -4,11 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
+import { WHATSAPP_URL } from '../utils/whatsapp';
 
 const navItems: { name: string; to: string }[] = [
   { name: 'Inicio', to: '/#home' },
   { name: 'Servicios', to: '/#services' },
-  { name: 'Portfolio', to: '/#portfolio' },
   { name: 'Proyectos', to: '/proyectos' },
   { name: 'Crean2', to: '/crean2' },
   { name: 'Equipo', to: '/#team' },
@@ -93,8 +93,10 @@ export const Navbar: React.FC = () => {
           />
 
           <motion.div initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15, duration: 0.5 }}>
-            <Link
-              to="/#contact"
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`inline-flex items-center gap-2 px-4 py-2.5 md:px-6 md:py-3 rounded-full border text-[9px] md:text-[10px] font-sync uppercase tracking-[0.2em] transition-colors duration-300 interactive ${
                 scrolled || isMenuOpen
                   ? 'border-zinc-300/80 text-zinc-900 hover:bg-[#1FCDD2] hover:text-black hover:border-[#1FCDD2] dark:border-white/15 dark:text-white'
@@ -103,7 +105,7 @@ export const Navbar: React.FC = () => {
             >
               Hablemos
               <ArrowUpRight size={14} className="opacity-70" aria-hidden />
-            </Link>
+            </a>
           </motion.div>
 
           <motion.button

@@ -1,12 +1,12 @@
 
 import React, { useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { GeminiAssistant } from './GeminiAssistant';
 import { CustomCursor } from './CustomCursor';
-import { ChevronDown, Package, Store, UtensilsCrossed, Send } from 'lucide-react';
+import { ChevronDown, Package, Store, UtensilsCrossed, Send, PenTool, Printer, Expand, LayoutGrid, Boxes } from 'lucide-react';
+import { WHATSAPP_URL, buildWhatsappUrl } from '../utils/whatsapp';
 
 const stats = [
   { label: 'Marcas intervenidas', value: '200+' },
@@ -53,6 +53,14 @@ const faqAcabados = [
   { q: '¿Ayudan con el diseño si solo tengo la idea?', a: 'Sí. Nuestro equipo gráfico puede desarrollar pieza desde brief o ajustar archivos que ya tengas.' },
 ];
 
+const lineasNegocio = [
+  { name: 'Diseño Gráfico', icon: PenTool },
+  { name: 'Impresión Digital', icon: Printer },
+  { name: 'Impresión Gran Formato', icon: Expand },
+  { name: 'Sistema de exhibición', icon: LayoutGrid },
+  { name: 'Desarrollo de productos', icon: Boxes },
+];
+
 const galleryImages = Array.from({ length: 8 }, (_, i) => `https://picsum.photos/600/450?random=${60 + i}`);
 
 const serviceOptions = [
@@ -83,11 +91,11 @@ export const Crean2: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Crean2 — ${form.servicio || 'Consulta'}`);
-    const body = encodeURIComponent(
-      `Nombre: ${form.nombre}\nEmail: ${form.email}\nWhatsApp: ${form.whatsapp}\nServicio: ${form.servicio}\n\n${form.detalles}`
-    );
-    window.location.href = `mailto:info@mtmmarcatumarca.com?subject=${subject}&body=${body}`;
+    const message =
+      `Hola, quiero información sobre un servicio (Crean2).\n\n` +
+      `Nombre: ${form.nombre}\nEmail: ${form.email}\nWhatsApp: ${form.whatsapp}\n` +
+      `Servicio: ${form.servicio}\n\n${form.detalles}`;
+    window.open(buildWhatsappUrl(message), '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -133,17 +141,19 @@ export const Crean2: React.FC = () => {
               className="mt-10 flex flex-wrap justify-center gap-4"
             >
               <a
-                href="#kits"
+                href="#lineas"
                 className="px-8 py-3 rounded-full bg-[#1FCDD2] text-black font-sync text-[10px] uppercase tracking-[0.2em] interactive"
               >
-                Ver kits
+                Líneas de negocio
               </a>
-              <Link
-                to="/#contact"
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-full border border-zinc-300/90 px-8 py-3 font-sync text-[10px] uppercase tracking-[0.2em] text-zinc-800 hover:border-[#1FCDD2]/50 dark:border-white/15 dark:text-white interactive"
               >
                 Contacto MTM
-              </Link>
+              </a>
             </motion.div>
           </div>
         </section>
@@ -219,7 +229,7 @@ export const Crean2: React.FC = () => {
           </div>
         </section>
 
-        {/* Kits */}
+        {/* Kits — sección ocultada temporalmente
         <section id="kits" className="border-y border-zinc-200/80 bg-zinc-100/50 px-6 py-20 md:px-12 md:py-28 dark:border-white/5 dark:bg-white/[0.02]">
           <div className="max-w-7xl mx-auto space-y-20">
             <div className="text-center max-w-2xl mx-auto">
@@ -249,6 +259,41 @@ export const Crean2: React.FC = () => {
               subtitle="Emprendedores y locales comerciales"
               items={kitsRestaurantes}
             />
+          </div>
+        </section>
+        */}
+
+        {/* Líneas de negocio */}
+        <section id="lineas" className="border-y border-zinc-200/80 bg-zinc-100/50 px-6 py-20 md:px-12 md:py-28 dark:border-white/5 dark:bg-white/[0.02]">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-14 text-center max-w-2xl mx-auto">
+              <h2 className="mb-4 font-headline text-3xl font-bold tracking-tighter text-zinc-900 md:text-5xl dark:text-white">
+                Líneas de negocio
+              </h2>
+              <div className="mx-auto w-20 h-1 bg-[#1FCDD2]" />
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+              {lineasNegocio.map((linea, i) => {
+                const Icon = linea.icon;
+                return (
+                  <motion.div
+                    key={linea.name}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.06 }}
+                    className="group flex flex-col items-center gap-4 rounded-2xl border border-zinc-200/90 bg-white p-6 text-center transition-colors hover:border-[#1FCDD2]/40 md:rounded-3xl md:p-8 dark:border-white/10 dark:bg-white/[0.03]"
+                  >
+                    <div className="rounded-2xl bg-[#1FCDD2]/15 text-[#1FCDD2] p-4 border border-[#1FCDD2]/20 transition-transform duration-500 group-hover:scale-110">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className="font-headline text-sm font-bold leading-tight tracking-tight text-zinc-900 md:text-base dark:text-white">
+                      {linea.name}
+                    </span>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </section>
 

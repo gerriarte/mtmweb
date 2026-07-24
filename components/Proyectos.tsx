@@ -6,6 +6,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { GeminiAssistant } from './GeminiAssistant';
+import { WHATSAPP_URL } from '../utils/whatsapp';
 import { CustomCursor } from './CustomCursor';
 import { ProjectDetail } from './ProjectDetail';
 import { portfolioProjects, type PortfolioProject, type PortfolioServiceVertical } from '../data/portfolioData';
@@ -228,12 +229,14 @@ export const Proyectos: React.FC = () => {
                 >
                   Casos en inicio
                 </Link>
-                <Link
-                  to="/#contact"
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 rounded-full bg-[#1FCDD2] text-black text-[10px] font-sync uppercase tracking-[0.2em] hover:opacity-90 transition-opacity interactive"
                 >
                   Hablemos de tu proyecto
-                </Link>
+                </a>
               </div>
             </div>
           </div>

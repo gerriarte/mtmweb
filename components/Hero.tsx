@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Play, X, MessageSquare, ArrowDown } from 'lucide-react';
+import { WHATSAPP_URL } from '../utils/whatsapp';
 
 type HeroTitlePhase = 'mtm' | 'makeThemMove' | 'marcaTuMarca';
 
@@ -190,14 +191,16 @@ export const Hero: React.FC = () => {
           className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center"
         >
           {/* Botón Hablemos Ahora - Prominente #1FCDD2 */}
-          <Link
-            to="/#contact"
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group relative px-10 py-5 bg-[#1FCDD2] text-black rounded-full font-sync text-[10px] md:text-xs uppercase font-bold tracking-widest overflow-hidden transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(31,205,210,0.3)] flex items-center gap-3 interactive"
           >
             <MessageSquare size={16} />
             <span className="relative z-10">Hablemos Ahora</span>
             <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          </Link>
+          </a>
 
           <Link
             to="/proyectos"

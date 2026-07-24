@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Instagram, Linkedin, Twitter, HelpCircle, ChevronRight, ChevronLeft } from 'lucide-react';
+import { buildWhatsappUrl } from '../utils/whatsapp';
 
 export const Contact: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -15,6 +16,14 @@ export const Contact: React.FC = () => {
 
   const nextStep = () => setStep(s => Math.min(s + 1, 3));
   const prevStep = () => setStep(s => Math.max(s - 1, 1));
+
+  const handleSend = () => {
+    const message =
+      `Hola, quiero información sobre un servicio.\n\n` +
+      `Nombre: ${formData.nombre}\nEmpresa: ${formData.empresa}\n` +
+      `Email: ${formData.email}\nWhatsApp: ${formData.whatsapp}\n\n${formData.mensaje}`;
+    window.open(buildWhatsappUrl(message), '_blank', 'noopener,noreferrer');
+  };
 
   const steps = [
     { id: 1, label: "Identidad" },
@@ -200,7 +209,7 @@ export const Contact: React.FC = () => {
                 <div className="absolute inset-0 bg-[#1FCDD2] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               </button>
             ) : (
-              <button type="button" className="group relative flex items-center gap-4 overflow-hidden rounded-full bg-zinc-950 px-10 py-5 font-sync text-[10px] uppercase tracking-widest text-white interactive dark:bg-zinc-100 dark:text-zinc-950">
+              <button type="button" onClick={handleSend} className="group relative flex items-center gap-4 overflow-hidden rounded-full bg-zinc-950 px-10 py-5 font-sync text-[10px] uppercase tracking-widest text-white interactive dark:bg-zinc-100 dark:text-zinc-950">
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-zinc-950">Enviar Propuesta</span>
                 <Send size={16} className="relative z-10 transition-all duration-300 group-hover:translate-x-2 group-hover:-translate-y-2 group-hover:text-zinc-950" />
                 <div className="absolute inset-0 bg-[#1FCDD2] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />

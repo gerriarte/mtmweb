@@ -8,6 +8,7 @@ import { GeminiAssistant } from './GeminiAssistant';
 import { CustomCursor } from './CustomCursor';
 import { getCaseStudyProject } from '../data/caseStudyRegistry';
 import { toYoutubeEmbed } from '../utils/youtubeEmbed';
+import { WHATSAPP_URL } from '../utils/whatsapp';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 const slideEase = ease;
@@ -344,12 +345,14 @@ export const CaseStudyProjectPage: React.FC = () => {
         )}
 
         <section className="py-20 md:py-24 px-6 text-center border-b border-zinc-200/80 dark:border-white/[0.08]">
-          <Link
-            to="/#contact"
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-[#1FCDD2] text-black text-[10px] font-sync uppercase tracking-[0.25em] hover:brightness-110 transition-[filter] interactive"
           >
             Hablemos de tu marca
-          </Link>
+          </a>
         </section>
       </main>
 

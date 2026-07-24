@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Navbar } from './Navbar';
 import { Hero } from './Hero';
 import { Services } from './Services';
-import { Portfolio } from './Portfolio';
+// import { Portfolio } from './Portfolio'; // ocultado temporalmente
 import { Team } from './Team';
 import { Contact } from './Contact';
 import { Footer } from './Footer';
@@ -103,9 +103,11 @@ export const Home: React.FC = () => {
           <Stats />
         </section>
 
+        {/* Sección de proyectos/portfolio ocultada temporalmente
         <section id="portfolio" data-scroll-grow>
           <Portfolio />
         </section>
+        */}
 
         <section data-scroll-grow>
           <Clients />
