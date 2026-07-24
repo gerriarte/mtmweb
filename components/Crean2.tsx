@@ -5,7 +5,7 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { GeminiAssistant } from './GeminiAssistant';
 import { CustomCursor } from './CustomCursor';
-import { ChevronDown, Package, Store, UtensilsCrossed, Send, PenTool, Printer, Expand, LayoutGrid, Boxes } from 'lucide-react';
+import { ChevronDown, Package, Store, UtensilsCrossed, Send, PenTool, Printer, Expand, LayoutGrid, Boxes, ExternalLink } from 'lucide-react';
 import { WHATSAPP_URL, buildWhatsappUrl } from '../utils/whatsapp';
 
 const stats = [
@@ -60,8 +60,6 @@ const lineasNegocio = [
   { name: 'Sistema de exhibición', icon: LayoutGrid },
   { name: 'Desarrollo de productos', icon: Boxes },
 ];
-
-const galleryImages = Array.from({ length: 8 }, (_, i) => `https://picsum.photos/600/450?random=${60 + i}`);
 
 const serviceOptions = [
   'Audiovisual',
@@ -297,26 +295,24 @@ export const Crean2: React.FC = () => {
           </div>
         </section>
 
-        {/* Gallery */}
+        {/* Publicaciones */}
         <section className="py-20 md:py-28 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="mb-10 text-center font-headline text-3xl font-bold tracking-tighter text-zinc-900 md:text-5xl dark:text-white">
-              Crean2 <span className="text-zinc-500 dark:text-neutral-600">en imágenes</span>
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="mb-6 font-headline text-3xl font-bold tracking-tighter text-zinc-900 md:text-5xl dark:text-white">
+              Nuestras <span className="text-zinc-500 dark:text-neutral-600">publicaciones</span>
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-              {galleryImages.map((src, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: (i % 4) * 0.04 }}
-                  className="aspect-[4/3] overflow-hidden rounded-xl border border-zinc-200/90 bg-neutral-900 dark:border-white/10"
-                >
-                  <img src={src} alt={`Proyecto Crean2 ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-                </motion.div>
-              ))}
-            </div>
+            <p className="mb-10 text-sm text-zinc-600 md:text-base dark:text-neutral-400">
+              Explora nuestro catálogo y trabajos publicados.
+            </p>
+            <a
+              href="https://indd.adobe.com/view/52c23560-b5a7-4e8c-9747-04ef5218fc74"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 rounded-full bg-[#1FCDD2] px-8 py-4 font-sync text-[10px] uppercase tracking-[0.2em] text-black transition-transform hover:scale-105 interactive"
+            >
+              Saber más sobre nuestras publicaciones
+              <ExternalLink size={16} />
+            </a>
           </div>
         </section>
 
