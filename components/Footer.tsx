@@ -29,7 +29,6 @@ export const Footer: React.FC = () => {
         </div>
         
         <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-[10px] font-sync uppercase tracking-widest text-zinc-600 dark:text-neutral-500">
-          <Link to="/proyectos" className="hover:text-[#1FCDD2] transition-colors">Proyectos</Link>
           <Link to="/crean2" className="hover:text-[#1FCDD2] transition-colors">Crean2</Link>
           <a href="#" className="hover:text-[#1FCDD2] transition-colors">Privacidad</a>
           <a href="#" className="hover:text-[#1FCDD2] transition-colors">Términos</a>

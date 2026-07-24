@@ -9,7 +9,6 @@ import { WHATSAPP_URL } from '../utils/whatsapp';
 const navItems: { name: string; to: string }[] = [
   { name: 'Inicio', to: '/#home' },
   { name: 'Servicios', to: '/#services' },
-  { name: 'Proyectos', to: '/proyectos' },
   { name: 'Crean2', to: '/crean2' },
   { name: 'Equipo', to: '/#team' },
   { name: 'Contacto', to: '/#contact' },
