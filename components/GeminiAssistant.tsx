@@ -1,8 +1,10 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { MessageSquare, X, Send, Sparkles } from 'lucide-react';
 import { GeminiService } from '../services/gemini';
+import { POLICY_PATH } from './DataConsent';
 
 export const GeminiAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -99,6 +101,18 @@ export const GeminiAssistant: React.FC = () => {
                   <Send size={14} />
                 </button>
               </div>
+              <p className="mt-3 px-1 text-[10px] leading-relaxed text-zinc-500 dark:text-neutral-500">
+                Evita compartir datos personales por este canal. Consulta nuestra{' '}
+                <Link
+                  to={POLICY_PATH}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#1FCDD2] underline underline-offset-2 hover:opacity-80"
+                >
+                  Política de Tratamiento de Datos
+                </Link>
+                .
+              </p>
             </div>
           </motion.div>
         )}

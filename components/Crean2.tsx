@@ -7,6 +7,7 @@ import { GeminiAssistant } from './GeminiAssistant';
 import { CustomCursor } from './CustomCursor';
 import { ChevronDown, Package, Store, UtensilsCrossed, Send, PenTool, Printer, Expand, LayoutGrid, Boxes, ExternalLink } from 'lucide-react';
 import { WHATSAPP_URL, buildWhatsappUrl } from '../utils/whatsapp';
+import { DataConsent } from './DataConsent';
 
 const stats = [
   { label: 'Marcas intervenidas', value: '200+' },
@@ -75,6 +76,8 @@ export const Crean2: React.FC = () => {
     servicio: '',
     detalles: '',
   });
+  const [acceptedPolicy, setAcceptedPolicy] = useState(false);
+  const [consentError, setConsentError] = useState<string | null>(null);
 
   const toggleFaq = (section: 'e' | 'a', i: number) => {
     setOpenFaq((prev) => (prev?.section === section && prev.i === i ? null : { section, i }));
@@ -82,10 +85,17 @@ export const Crean2: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!acceptedPolicy) {
+      setConsentError('Debes autorizar el tratamiento de tus datos personales para continuar.');
+      return;
+    }
+    setConsentError(null);
+
     const message =
       `Hola, quiero información sobre un servicio (Crean2).\n\n` +
       `Nombre: ${form.nombre}\nEmail: ${form.email}\nWhatsApp: ${form.whatsapp}\n` +
-      `Servicio: ${form.servicio}\n\n${form.detalles}`;
+      `Servicio: ${form.servicio}\n\n${form.detalles}\n\n` +
+      `Autorizo el tratamiento de mis datos personales según la Política de Tratamiento de Datos de MTM (Ley 1581 de 2012).`;
     window.open(buildWhatsappUrl(message), '_blank', 'noopener,noreferrer');
   };
 
@@ -364,9 +374,25 @@ export const Crean2: React.FC = () => {
                   placeholder="Brief, plazos, cantidades..."
                 />
               </label>
+
+              <DataConsent
+                id="crean2-consent"
+                required
+                checked={acceptedPolicy}
+                onChange={(checked) => {
+                  setAcceptedPolicy(checked);
+                  if (checked) setConsentError(null);
+                }}
+                error={consentError}
+                className="rounded-2xl border border-zinc-200/90 bg-zinc-50 p-5 dark:border-white/10 dark:bg-black/30"
+              />
+
               <button
                 type="submit"
-                className="w-full md:w-auto md:min-w-[200px] inline-flex items-center justify-center gap-2 rounded-full bg-[#1FCDD2] text-black font-sync text-[10px] uppercase tracking-[0.2em] py-4 px-10 interactive"
+                aria-disabled={!acceptedPolicy}
+                className={`w-full md:w-auto md:min-w-[200px] inline-flex items-center justify-center gap-2 rounded-full bg-[#1FCDD2] text-black font-sync text-[10px] uppercase tracking-[0.2em] py-4 px-10 interactive ${
+                  acceptedPolicy ? '' : 'opacity-50'
+                }`}
               >
                 <Send size={16} />
                 Enviar

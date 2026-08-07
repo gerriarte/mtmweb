@@ -3,9 +3,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Instagram, Linkedin, Twitter, HelpCircle, ChevronRight, ChevronLeft } from 'lucide-react';
 import { buildWhatsappUrl } from '../utils/whatsapp';
+import { DataConsent, DataConsentNote } from './DataConsent';
 
 export const Contact: React.FC = () => {
   const [step, setStep] = useState(1);
+  const [acceptedPolicy, setAcceptedPolicy] = useState(false);
+  const [consentError, setConsentError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -18,10 +21,17 @@ export const Contact: React.FC = () => {
   const prevStep = () => setStep(s => Math.max(s - 1, 1));
 
   const handleSend = () => {
+    if (!acceptedPolicy) {
+      setConsentError('Debes autorizar el tratamiento de tus datos personales para continuar.');
+      return;
+    }
+    setConsentError(null);
+
     const message =
       `Hola, quiero información sobre un servicio.\n\n` +
       `Nombre: ${formData.nombre}\nEmpresa: ${formData.empresa}\n` +
-      `Email: ${formData.email}\nWhatsApp: ${formData.whatsapp}\n\n${formData.mensaje}`;
+      `Email: ${formData.email}\nWhatsApp: ${formData.whatsapp}\n\n${formData.mensaje}\n\n` +
+      `Autorizo el tratamiento de mis datos personales según la Política de Tratamiento de Datos de MTM (Ley 1581 de 2012).`;
     window.open(buildWhatsappUrl(message), '_blank', 'noopener,noreferrer');
   };
 
@@ -49,7 +59,9 @@ export const Contact: React.FC = () => {
               Diligencia el formulario para contactarte. <br />
               <span className="font-semibold text-zinc-900 dark:text-white">Completa el formulario y muy pronto nos comunicaremos para agendar.</span>
             </p>
-            
+
+            <DataConsentNote className="max-w-md" />
+
             <div className="flex gap-6 pt-6">
               {[Instagram, Linkedin, Twitter].map((Icon, i) => (
                 <motion.a
@@ -178,9 +190,20 @@ export const Contact: React.FC = () => {
                     value={formData.mensaje}
                     onChange={(e) => setFormData({...formData, mensaje: e.target.value})}
                     className="w-full resize-none border-b border-zinc-400 bg-transparent py-4 text-lg font-light text-zinc-950 placeholder:text-zinc-500 focus:border-[#1FCDD2] focus:outline-none focus:ring-0 transition-colors dark:border-zinc-500 dark:text-zinc-50 dark:placeholder:text-zinc-500" 
-                    placeholder="Cuéntanos brevemente sobre tu proyecto..." 
+                    placeholder="Cuéntanos brevemente sobre tu proyecto..."
                   />
                 </div>
+
+                <DataConsent
+                  id="contact-consent"
+                  checked={acceptedPolicy}
+                  onChange={(checked) => {
+                    setAcceptedPolicy(checked);
+                    if (checked) setConsentError(null);
+                  }}
+                  error={consentError}
+                  className="rounded-2xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-700 dark:bg-zinc-800/40"
+                />
               </motion.div>
             )}
           </AnimatePresence>
@@ -209,7 +232,14 @@ export const Contact: React.FC = () => {
                 <div className="absolute inset-0 bg-[#1FCDD2] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               </button>
             ) : (
-              <button type="button" onClick={handleSend} className="group relative flex items-center gap-4 overflow-hidden rounded-full bg-zinc-950 px-10 py-5 font-sync text-[10px] uppercase tracking-widest text-white interactive dark:bg-zinc-100 dark:text-zinc-950">
+              <button
+                type="button"
+                onClick={handleSend}
+                aria-disabled={!acceptedPolicy}
+                className={`group relative flex items-center gap-4 overflow-hidden rounded-full bg-zinc-950 px-10 py-5 font-sync text-[10px] uppercase tracking-widest text-white interactive dark:bg-zinc-100 dark:text-zinc-950 ${
+                  acceptedPolicy ? '' : 'opacity-50'
+                }`}
+              >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-zinc-950">Enviar Propuesta</span>
                 <Send size={16} className="relative z-10 transition-all duration-300 group-hover:translate-x-2 group-hover:-translate-y-2 group-hover:text-zinc-950" />
                 <div className="absolute inset-0 bg-[#1FCDD2] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />

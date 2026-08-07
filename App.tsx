@@ -7,6 +7,7 @@ import { Home } from './components/Home';
 import { Crean2 } from './components/Crean2';
 import { Proyectos } from './components/Proyectos';
 import { CaseStudyProjectPage } from './components/CaseStudyProjectPage';
+import { PoliticaDatos } from './components/PoliticaDatos';
 
 const pageEase = [0.16, 1, 0.3, 1] as const;
 
@@ -31,6 +32,7 @@ function AnimatedRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/crean2" element={<Crean2 />} />
           <Route path="/proyectos" element={<Proyectos />} />
+          <Route path="/politica-de-datos" element={<PoliticaDatos />} />
           <Route path="/proyectos/branding/:slug" element={<CaseStudyProjectPage />} />
           <Route path="/proyectos/redes-sociales/:slug" element={<CaseStudyProjectPage />} />
           <Route path="/proyectos/caso/:slug" element={<CaseStudyProjectPage />} />
