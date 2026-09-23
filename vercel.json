@@ -4,5 +4,31 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "installCommand": "npm install",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "headers": [
+    {
+      "source": "/croky-ar/(.*)",
+      "headers": [
+        { "key": "Permissions-Policy", "value": "camera=(self), gyroscope=(self), accelerometer=(self)" }
+      ]
+    },
+    {
+      "source": "/croky-ar",
+      "headers": [
+        { "key": "Permissions-Policy", "value": "camera=(self), gyroscope=(self), accelerometer=(self)" }
+      ]
+    },
+    {
+      "source": "/croky-ar/(.*)\\.mind",
+      "headers": [{ "key": "Content-Type", "value": "application/octet-stream" }]
+    },
+    {
+      "source": "/croky-ar/(.*)\\.glb",
+      "headers": [{ "key": "Content-Type", "value": "model/gltf-binary" }]
+    }
+  ],
+  "rewrites": [
+    { "source": "/croky-ar", "destination": "/croky-ar/index.html" },
+    { "source": "/croky-ar/", "destination": "/croky-ar/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
